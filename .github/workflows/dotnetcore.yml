@@ -47,14 +47,19 @@ jobs:
         path: WpfApp1/bin/Debug
     - name: Build with script 2
       run: .\Scripts\build.ps1
-      
-    - name: Upload exe to S3 bucket
-      uses: tpaschalis/s3-sync-action@master
-      with:
-        args: --acl public-read
+    - name: AWS
+      uses: chrislennon/action-aws-cli@v1.1
+        # All commands after this point have access to the AWS CLI
+      run: aws s3 ls
       env:
-         FILE: ./WpfApp1/bin/Debug/WpfApp1.exe
-         AWS_REGION: 'us-east-2'
-         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: AWS2
+      uses: chrislennon/action-aws-cli@v1.1:  
+      run: aws s3 cp ./WpfApp1/bin/Debug/WpfApp1.exe s3://danatestingbucket --region us-east-2
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
+
+

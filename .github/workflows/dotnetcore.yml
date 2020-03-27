@@ -21,13 +21,24 @@ jobs:
       run:  nuget restore .\WpfAppMain.sln
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@v1
  #   - name: Build Unit Tests with msbuild
  #     run: msbuild UnitTestProject1\UnitTestProject1.csproj 
  #   - name: Build App with msbuild 2
  #     run: msbuild WpfApp1\WpfApp1.csproj 
     - name: Build with script
       run: .\Scripts\build.ps1
-
+    - name: Test app
+      run: vstest.console.exe /Platform:x64 .\UnitTestProject1\bin\Debug\netcoreapp3.1\UnitTestProject1.dll
+       
+    - name: Sign app
+      uses: DanaBear/code-sign-action@dea5c47834f912e191a238d2d0c5690ebd45cba6
+      with:
+        certificate: '${{ secrets.CERT2 }}'
+        password: '${{ secrets.PASS }}'
+        folder: 'WpfApp1/bin/Debug'
+        recursive: true
  #   - run: mkdir -p path/to/artifact
  #   - run: echo hello > path/to/artifact/world.txt
     - uses: actions/upload-artifact@v1

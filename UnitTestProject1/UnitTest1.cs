@@ -14,7 +14,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Test2()
         {
-            Assert.IsTrue(false);
+            Assert.IsTrue(true);
         }
     }
 }

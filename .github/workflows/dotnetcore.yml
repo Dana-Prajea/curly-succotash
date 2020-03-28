@@ -33,12 +33,12 @@ jobs:
       run: vstest.console.exe /Platform:x64 .\UnitTestProject1\bin\Debug\netcoreapp3.1\UnitTestProject1.dll
        
     - name: Sign app
-      uses: DanaBear/code-sign-action@24156db1675f30dacc65c754c0f65b6b1ff658b4
+      uses: DanaBear/code-sign-action@v2
       with:
         certificate: '${{ secrets.CERT2 }}'
         password: '${{ secrets.PASS }}'
-        certificatesha1: '1d7ec06212fdeae92f8d3010ea422ecff2619f5d'
-        certificatename: 'DanaWoo'
+        certificatesha1: '${{ secrets.CERTHASH }}'
+        certificatename: '${{ secrets.CERTNAME }}'
         folder: 'WpfApp1/bin/Debug'
         recursive: true
  #   - run: mkdir -p path/to/artifact

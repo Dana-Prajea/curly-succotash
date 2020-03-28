@@ -23,6 +23,7 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@v1
+      
  #   - name: Build Unit Tests with msbuild
  #     run: msbuild UnitTestProject1\UnitTestProject1.csproj 
  #   - name: Build App with msbuild 2
@@ -41,21 +42,15 @@ jobs:
         certificatename: '${{ secrets.CERTNAME }}'
         folder: 'WpfApp1/bin/Debug'
         recursive: true
- #   - run: mkdir -p path/to/artifact
- #   - run: echo hello > path/to/artifact/world.txt
+
     - uses: actions/upload-artifact@v1
       with:
         name: my-artifact
         path: WpfApp1/bin/Debug
-    - name: Build with script 2
-      run: .\Scripts\build.ps1
+    
     - name: AWS
       uses: chrislennon/action-aws-cli@v1.1
         # All commands after this point have access to the AWS CLI
-    - run: aws s3 ls
-      env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
     - run: aws s3 cp ./WpfApp1/bin/Debug/WpfApp1.exe s3://danatestingbucket --region us-east-2
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

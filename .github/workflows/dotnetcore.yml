@@ -34,10 +34,9 @@ jobs:
       run: vstest.console.exe /Platform:x64 .\UnitTestProject1\bin\Debug\netcoreapp3.1\UnitTestProject1.dll
        
     - name: Sign app
-      uses: DanaBear/code-sign-action@v2
+      uses: DanaBear/code-sign-action@9aabb62236e10da2d91301ca045fb3ffcb2a32c5
       with:
-        certificate: '${{ secrets.CERT2 }}'
-        password: '${{ secrets.PASS }}'
+        certificate: '${{ secrets.CERTNOPASS }}'
         certificatesha1: '${{ secrets.CERTHASH }}'
         certificatename: '${{ secrets.CERTNAME }}'
         folder: 'WpfApp1/bin/Debug'

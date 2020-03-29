@@ -34,7 +34,7 @@ jobs:
       run: vstest.console.exe /Platform:x64 .\UnitTestProject1\bin\Debug\netcoreapp3.1\UnitTestProject1.dll
        
     - name: Sign app
-      uses: DanaBear/code-sign-action@9aabb62236e10da2d91301ca045fb3ffcb2a32c5
+      uses: DanaBear/code-sign-action@79363c937adaac7c1964a1ef507fd18e1ebfe28a
       with:
         certificate: '${{ secrets.CERTNOPASS }}'
         certificatename: '${{ secrets.CERTNAME }}'

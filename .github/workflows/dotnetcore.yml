@@ -37,7 +37,6 @@ jobs:
       uses: DanaBear/code-sign-action@9aabb62236e10da2d91301ca045fb3ffcb2a32c5
       with:
         certificate: '${{ secrets.CERTNOPASS }}'
-        certificatesha1: '${{ secrets.CERTHASH }}'
         certificatename: '${{ secrets.CERTNAME }}'
         folder: 'WpfApp1/bin/Debug'
         recursive: true

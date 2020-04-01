@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/DanaBear/curly-succotash/workflows/.github/workflows/dotnetcore.yml/badge.svg)](https://github.com/DanaBear/curly-succotash/actions)
+
 # curly-succotash
 
 This is a simple (and useless) WPF app that contains even less useful tests. The purpose of this project was to test Github actions. The yaml file does the following: 

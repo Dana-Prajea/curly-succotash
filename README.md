@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/DanaBear/curly-succotash/workflows/.github/workflows/dotnetcore.yml/badge.svg)](https://github.com/DanaBear/curly-succotash/actions)
+[![Actions Status](https://github.com/DanaBear/curly-succotash/workflows/.NET%20Core/badge.svg)](https://github.com/DanaBear/curly-succotash/actions)
 
 # curly-succotash
 

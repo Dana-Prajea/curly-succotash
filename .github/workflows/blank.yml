@@ -1,0 +1,15 @@
+name: Demo Test 
+on: push
+jobs:   
+  MyFirstJob:
+    runs-on: [windows-latest]
+    name: Nice name to see
+    steps:
+    - name: Print a greeting
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+        shell: cmd 
+        run: echo %MY_VAR% $Env:FIRST_NAME $Env:MIDDLE_NAME $Env:LAST_NAME.

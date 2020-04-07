@@ -21,5 +21,6 @@ jobs:
         FIRST_NAME: Mona
         MIDDLE_NAME: The
         LAST_NAME: Octocat
-      run: echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+      shell:  cmd
+      run: echo %MY_VAR% %FIRST_NAME% %MIDDLE_NAME% %LAST_NAME%.
 
